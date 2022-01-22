@@ -45,6 +45,8 @@ We also have a pro version of this product which bundles even more pages and com
 
 - Version Demo:[https://dashboard-da768.web.app/app/dashboard](https://dashboard-da768.web.app/app/dashboard) Deploy en Firebase.
 
+- Comandos para Docker con nginx :docker run -d -p 8080:80 -v ruta_origen/build/:/usr/share/nginx/html nginx:"version"
+
 ## 🖌 Design Files
 
 👉[Download Sketch file](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-dashboard-free.sketch)
@@ -106,5 +108,5 @@ material-react-dashboard
 
 ## Contact Us
 
-- Email Us: support@deviasio.zendesk.com
-- [Follow us on Instagram](https://www.instagram.com/deviasio/)
+- Email Us: mipcomputacion@gmail.com
+- [Linkedin](https://www.linkedin.com/in/matias-davila)
