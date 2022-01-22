@@ -43,7 +43,7 @@ We also have a pro version of this product which bundles even more pages and com
 
 - Views are on: `localhost:3000`
 
-- [Version Demo:](https://dashboard-da768.web.app/app/dashboard) [https://dashboard-da768.web.app/app/dashboard](https://dashboard-da768.web.app/app/dashboard) Deploy en Firebase.
+- Version Demo:[https://dashboard-da768.web.app/app/dashboard](https://dashboard-da768.web.app/app/dashboard) Deploy en Firebase.
 
 ## 🖌 Design Files
 
