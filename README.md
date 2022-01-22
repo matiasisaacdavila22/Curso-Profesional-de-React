@@ -43,6 +43,8 @@ We also have a pro version of this product which bundles even more pages and com
 
 - Views are on: `localhost:3000`
 
+- Version Demo: `https://dashboard-da768.web.app/app/dashboard`
+
 ## 🖌 Design Files
 
 👉[Download Sketch file](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-dashboard-free.sketch)
