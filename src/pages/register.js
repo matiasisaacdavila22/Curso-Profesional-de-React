@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { firebaseRegistrarUsuario } from 'src/utils/FirebaseUtils';
 import {
   Box,
   Button,
@@ -16,6 +17,13 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Register = () => {
+
+  const registrarUsuario = (usuario) => {
+    firebaseRegistrarUsuario(usuario.email, usuario.password);
+    alert("El usuario se registró con éxito.")
+    navigate('/login', { replace: true });
+  }
+
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -55,8 +63,8 @@ const Register = () => {
           'This field must be checked'
         )
     }),
-    onSubmit: () => {
-      router.push('/');
+    onSubmit: (usuario) => {
+        registrarUsuario(usuario);
     }
   });
 
