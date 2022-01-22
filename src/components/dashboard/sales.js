@@ -1,15 +1,24 @@
 import { Bar } from 'react-chartjs-2';
-import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme } from '@mui/material';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  useTheme,
+  colors
+} from '@material-ui/core';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-export const Sales = (props) => {
+const Sales = (props) => {
   const theme = useTheme();
 
   const data = {
     datasets: [
       {
-        backgroundColor: '#3F51B5',
+        backgroundColor: colors.indigo[500],
         barPercentage: 0.5,
         barThickness: 12,
         borderRadius: 4,
@@ -19,7 +28,7 @@ export const Sales = (props) => {
         maxBarThickness: 10
       },
       {
-        backgroundColor: '#EEEEEE',
+        backgroundColor: colors.grey[200],
         barPercentage: 0.5,
         barThickness: 12,
         borderRadius: 4,
@@ -29,7 +38,7 @@ export const Sales = (props) => {
         maxBarThickness: 10
       }
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 aug']
+    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
   };
 
   const options = {
@@ -39,35 +48,37 @@ export const Sales = (props) => {
     legend: { display: false },
     maintainAspectRatio: false,
     responsive: true,
-    xAxes: [
-      {
-        ticks: {
-          fontColor: theme.palette.text.secondary
-        },
-        gridLines: {
-          display: false,
-          drawBorder: false
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            fontColor: theme.palette.text.secondary
+          },
+          gridLines: {
+            display: false,
+            drawBorder: false
+          }
         }
-      }
-    ],
-    yAxes: [
-      {
-        ticks: {
-          fontColor: theme.palette.text.secondary,
-          beginAtZero: true,
-          min: 0
-        },
-        gridLines: {
-          borderDash: [2],
-          borderDashOffset: [2],
-          color: theme.palette.divider,
-          drawBorder: false,
-          zeroLineBorderDash: [2],
-          zeroLineBorderDashOffset: [2],
-          zeroLineColor: theme.palette.divider
+      ],
+      yAxes: [
+        {
+          ticks: {
+            fontColor: theme.palette.text.secondary,
+            beginAtZero: true,
+            min: 0
+          },
+          gridLines: {
+            borderDash: [2],
+            borderDashOffset: [2],
+            color: theme.palette.divider,
+            drawBorder: false,
+            zeroLineBorderDash: [2],
+            zeroLineBorderDashOffset: [2],
+            zeroLineColor: theme.palette.divider
+          }
         }
-      }
-    ],
+      ]
+    },
     tooltips: {
       backgroundColor: theme.palette.background.paper,
       bodyFontColor: theme.palette.text.secondary,
@@ -86,8 +97,9 @@ export const Sales = (props) => {
       <CardHeader
         action={(
           <Button
-            endIcon={<ArrowDropDownIcon fontSize="small" />}
+            endIcon={<ArrowDropDownIcon />}
             size="small"
+            variant="text"
           >
             Last 7 days
           </Button>
@@ -118,8 +130,9 @@ export const Sales = (props) => {
       >
         <Button
           color="primary"
-          endIcon={<ArrowRightIcon fontSize="small" />}
+          endIcon={<ArrowRightIcon />}
           size="small"
+          variant="text"
         >
           Overview
         </Button>
@@ -127,3 +140,5 @@ export const Sales = (props) => {
     </Card>
   );
 };
+
+export default Sales;

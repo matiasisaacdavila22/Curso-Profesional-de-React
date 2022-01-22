@@ -1,30 +1,25 @@
-import Head from 'next/head';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import { AccountProfile } from '../components/account/account-profile';
-import { AccountProfileDetails } from '../components/account/account-profile-details';
-import { DashboardLayout } from '../components/dashboard-layout';
+import { Helmet } from 'react-helmet';
+import {
+  Box,
+  Container,
+  Grid
+} from '@material-ui/core';
+import AccountProfile from '../components/account/AccountProfile';
+import AccountProfileDetails from '../components/account/AccountProfileDetails';
 
 const Account = () => (
   <>
-    <Head>
-      <title>
-        Account | Material Kit
-      </title>
-    </Head>
+    <Helmet>
+      <title>Account | Material Kit</title>
+    </Helmet>
     <Box
-      component="main"
       sx={{
-        flexGrow: 1,
-        py: 8
+        backgroundColor: 'background.default',
+        minHeight: '100%',
+        py: 3
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          sx={{ mb: 3 }}
-          variant="h4"
-        >
-          Account
-        </Typography>
         <Grid
           container
           spacing={3}
@@ -49,12 +44,6 @@ const Account = () => (
       </Container>
     </Box>
   </>
-);
-
-Account.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
 );
 
 export default Account;

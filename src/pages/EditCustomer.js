@@ -1,32 +1,26 @@
 import {
   Box,
-  Button,
-  Checkbox,
-  Container,
-  FormHelperText,
-  Link,
-  TextField,
+  Button, Container, TextField,
   Typography
 } from '@material-ui/core';
 import { Formik } from 'formik';
 import { Helmet } from 'react-helmet';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { firebaseRegistrarUsuario } from 'src/utils/FirebaseUtil';
+import { useNavigate } from 'react-router-dom';
+import { firebaseCrear } from 'src/utils/FirebaseUtil';
 import * as Yup from 'yup';
 
-const Register = () => {
+const EditCustomer = () => {
   const navigate = useNavigate();
 
-  const registrarUsuario = (usuario) => {
-    firebaseRegistrarUsuario(usuario.email, usuario.password);
-    alert("El usuario se registró con éxito.")
-    navigate('/login', { replace: true });
+  const crearCliente = (cliente) => {
+    firebaseCrear('clientes', cliente);
+    navigate('/app/customers', { replace: true });
   }
 
   return (
     <>
       <Helmet>
-        <title>Register | Material Kit</title>
+        <title>Modificar cliente</title>
       </Helmet>
       <Box
         sx={{
@@ -41,22 +35,20 @@ const Register = () => {
           <Formik
             initialValues={{
               email: '',
+              phone: '',
               firstName: '',
-              lastName: '',
-              password: '',
-              policy: false
+              lastName: ''
             }}
             validationSchema={
               Yup.object().shape({
                 email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                 firstName: Yup.string().max(255).required('First name is required'),
-                lastName: Yup.string().max(255).required('Last name is required'),
-                password: Yup.string().max(255).required('password is required'),
-                policy: Yup.boolean().oneOf([true], 'This field must be checked')
+                phone: Yup.string().max(60),
+                lastName: Yup.string().max(255).required('Last name is required')
               })
             }
             onSubmit={(usuario) => {
-              registrarUsuario(usuario);
+              crearCliente(usuario);
             }}
           >
             {({
@@ -74,14 +66,7 @@ const Register = () => {
                     color="textPrimary"
                     variant="h2"
                   >
-                    Create new account
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
-                    Use your email to create new account
+                    Crear nuevo Cliente
                   </Typography>
                 </Box>
                 <TextField
@@ -122,52 +107,19 @@ const Register = () => {
                   variant="outlined"
                 />
                 <TextField
-                  error={Boolean(touched.password && errors.password)}
+                  error={Boolean(touched.phone && errors.phone)}
                   fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
+                  helperText={touched.phone && errors.phone}
+                  label="Phone Address"
                   margin="normal"
-                  name="password"
+                  name="phone"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  type="password"
-                  value={values.password}
+                  type="phone"
+                  value={values.phone}
                   variant="outlined"
                 />
-                <Box
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    ml: -1
-                  }}
-                >
-                  <Checkbox
-                    checked={values.policy}
-                    name="policy"
-                    onChange={handleChange}
-                  />
-                  <Typography
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    I have read the
-                    {' '}
-                    <Link
-                      color="primary"
-                      component={RouterLink}
-                      to="#"
-                      underline="always"
-                      variant="h6"
-                    >
-                      Terms and Conditions
-                    </Link>
-                  </Typography>
-                </Box>
-                {Boolean(touched.policy && errors.policy) && (
-                  <FormHelperText error>
-                    {errors.policy}
-                  </FormHelperText>
-                )}
+
                 <Box sx={{ py: 2 }}>
                   <Button
                     color="primary"
@@ -177,19 +129,10 @@ const Register = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign up now
+                    Crear
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Have an account?
-                  {' '}
-                  <Link component={RouterLink} to="/login" variant="h6" underline="hover">
-                    Sign in
-                  </Link>
-                </Typography>
+
               </form>
             )}
           </Formik>
@@ -199,4 +142,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default EditCustomer;
