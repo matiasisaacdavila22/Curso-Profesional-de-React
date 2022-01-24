@@ -1,9 +1,9 @@
-FROM node:14.17 as node
+FROM node:10 as node
 
 WORKDIR /app
 COPY ./ /app
 RUN npm install
-RUN npm run build -- --prod
+RUN npm run build 
 
-FROM nginx:1.17.10
-COPY --from=node /build /usr/share/nginx/html
+FROM nginx:1.17
+COPY --from=node /app/build /usr/share/nginx/html
